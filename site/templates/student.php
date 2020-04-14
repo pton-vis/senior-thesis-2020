@@ -29,13 +29,9 @@
     student__work__container
     layout-wrapper
     with-color
-    <?= ($hasBgImg) ? 'with-background-image' : '' ?>
-    <?= ($hasBgColor) ? 'with-background-color' : '' ?>
   "
   style="
     --text-color: <?= $page->text_color(); ?>;
-    <?= ($hasBgImg) ? '--background-image: url(' . $page->background_image()->toFile()->resize(2000)->url() . ');' : '' ?>
-    <?= ($hasBgColor) ? '--background-color: ' . $page->background_color() . ';' : '' ?>
     "
   >
   <div class="student__work__statement text">
@@ -98,6 +94,19 @@
     <?php endforeach; ?>
   </ul>
 
+</div>
+<div
+  class="
+    student__background
+    fixed
+    <?= ($hasBgImg) ? 'with-background-image' : '' ?>
+    <?= ($hasBgColor) ? 'with-background-color' : '' ?>
+    "
+  style="
+    <?= ($hasBgImg) ? '--background-image: url(' . $page->background_image()->toFile()->resize(2000)->url() . ');' : '' ?>
+    <?= ($hasBgColor) ? '--background-color: ' . $page->background_color() . ';' : '' ?>
+    "
+  >
 </div>
 <div class="student__name display with-color" style="--text-color: <?= $page->color(); ?>;">
   <?= $page->title(); ?>

@@ -1,6 +1,6 @@
 <?php snippet('header'); ?>
 
-<div class="layout-wrapper">
+<div class="layout-wrapper fixed">
   <div class="site__title display">
       <div class="main"><b><?= $site->title(); ?></b></div>
       <div class="secondary"><b><?= $site->title(); ?></b></div>
