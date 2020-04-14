@@ -1,0 +1,30 @@
+title: Home
+icon: page
+
+tabs:
+  main:
+    label: Main
+    icon: text
+    columns:
+      main:
+        width: 1/2
+        fields:
+          main_content:
+            label: Content
+            type: textarea
+            size: large
+      side:
+        width: 1/2
+        fields:
+          featured_recipes:
+            label: Featured Recipes
+            type: multiselect
+            options: query
+            query: site.children.template("recipes").children.template("recipe")
+  uploads:
+    label: Uploads
+    icon: file
+    sections:
+      file_uploads:
+        headline: Uploads
+        type: files

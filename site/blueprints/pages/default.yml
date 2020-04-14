@@ -1,0 +1,23 @@
+title: Default
+icon: page
+
+tabs:
+  main:
+    label: Main
+    icon: text
+    columns:
+      main:
+        width: 1/1
+        fields:
+          main_content:
+            label: Content
+            type: textarea
+            size: large
+            width: 1/2
+  uploads:
+    label: Uploads
+    icon: file
+    sections:
+      file_uploads:
+        headline: Uploads
+        type: files

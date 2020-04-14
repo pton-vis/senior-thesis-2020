@@ -1,0 +1,121 @@
+title: Student
+icon: template
+
+num: 0
+
+tabs:
+  main:
+    label: Main
+    icon: text
+    columns:
+      meta:
+        width: 1/3
+        sections:
+          options:
+            type: fields
+            fields:
+              content_or_url:
+                label: Content or URL
+                type: radio
+                options:
+                  content: Content
+                  url: URL
+                default: content
+          content_meta:
+            type: fields
+            when:
+              content_or_url: content
+            fields:
+              background_image_or_color:
+                label: Background Image or Color
+                type: radio
+                options:
+                  image: Image
+                  color: Color
+                default: image
+              background_image:
+                label: Background Image
+                type: files
+                max: 1
+                layout: cards
+                when:
+                  background_image_or_color: image
+              background_color:
+                label: Background Color
+                type: color
+                editableAlpha: true # (optional) if set to false, alpha value controls are not displayed
+                default: "#000000"
+                when:
+                  background_image_or_color: color
+              text_color:
+                label: Text Color
+                type: color
+                editableAlpha: true # (optional) if set to false, alpha value controls are not displayed
+                default: "#000000"
+      content:
+        width: 2/3
+        sections:
+          content_fields:
+            type: fields
+            when:
+              content_or_url: content
+            fields:
+              main_works:
+                label: Works
+                type: structure
+                fields:
+                  type_of_work:
+                    label: Type of Work
+                    type: radio
+                    default: upload
+                    options:
+                      text: Text
+                      embed: Video Embed
+                      upload: File Upload (image, document, video)
+                  work_embed:
+                    label: Video Embed URL
+                    type: text
+                    help: Youtube or Vimeo URL
+                    when:
+                      type_of_work: embed
+                  work_upload:
+                    label: File Upload
+                    type: files
+                    max: 1
+                    layout: cards
+                    when:
+                      type_of_work: upload
+                  work_text:
+                    label: Text / Caption
+                    type: textarea
+                    size: small
+              # main_embeds:
+              #   label: Embeds
+              #   type: structure
+              #   fields:
+              #     url:
+              #       label: URL
+              #       type: text
+              #       required: true
+              #     caption:
+              #       label: Caption
+              #       type: textarea
+              main_content:
+                label: Artist Statement
+                type: textarea
+                size: large
+          url_fields:
+            type: fields
+            when:
+              content_or_url: url
+            fields:
+              url_url:
+                label: URL
+                type: text
+  uploads:
+    label: Uploads
+    icon: file
+    sections:
+      file_uploads:
+        headline: Uploads
+        type: files
