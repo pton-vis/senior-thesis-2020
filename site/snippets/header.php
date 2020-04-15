@@ -23,7 +23,7 @@
   <?php endif; ?>
 
   <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-  <?= css(['assets/css/typefaces/stylesheet.css', 'assets/css/main.css', '@auto']);?>
+  <?= css(['assets/css/fonts/mad-sans-black.css', 'assets/css/fonts/mad-sans-bold.css', 'assets/css/main.css', '@auto']);?>
   <?= js(['assets/js/main.js', '@auto']); ?>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->

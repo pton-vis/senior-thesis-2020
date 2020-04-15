@@ -2,8 +2,8 @@
 
 <div class="layout-wrapper fixed">
   <div class="site__title display">
-      <div class="main"><b><?= $site->title(); ?></b></div>
-      <div class="secondary"><b><?= $site->title(); ?></b></div>
+      <div class="main"><?= $site->title(); ?></div>
+      <div class="secondary"><?= $site->title(); ?></div>
   </div>
 </div>
 <div class="student__list__container">
@@ -30,6 +30,11 @@
 <div class="info">
   <a href="#" onclick="toggleInfo()">info</a>
   <a href="http://vis.princeton.edu/">vis</a>
+  <?php if ($kirby->user()): ?>
+    <a href="/panel/logout">logout</a>
+  <?php else: ?>
+    <a href="/panel/login">login</a>
+  <?php endif; ?>
 </div>
 <div class="info__contents text">
   <div class="info__contents__button"><a href="#" onclick="toggleInfo()">close</a></div>

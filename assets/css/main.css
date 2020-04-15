@@ -13,20 +13,14 @@
   --margin--mobile: 1.25rem;
 
   --font-family: 'Libre Caslon Text', serif;
-  --font-family--display: 'Mad Sans', sans-serif;
+  --font-family--display: 'mad-sans-bold', sans-serif;
+  --font-family--display-secondary: 'mad-sans-black', sans-serif;
 
   --text-width: 500px;
 
 }
 
 /* RESET/GLOBAL */
-@font-face {
-    font-family: 'Mad Sans';
-    src: url('fonts/ms-bold.woff2') format('woff2');
-    font-weight: bold;
-    font-style: normal;
-}
-
 *,
 *:after,
 *:before{
@@ -208,9 +202,15 @@ a:hover {
 
 .student__work__item {
   min-width: var(--text-width);
-  width: var(--width, var(--text-width));
+  height: var(--height);
   margin-left: var(--margin-left, var(--margin));
   margin-top: var(--margin-top, var(--margin));
+}
+
+.student__work__item img {
+  width: auto;
+  height: 100%;
+  object-fit: contain;
 }
 
 /* Upload */
@@ -277,5 +277,20 @@ a:hover {
 
   .info__contents {
     transform: translateX(calc((-1 * var(--text-width)) -  (3 * var(--margin)) - 3px));
+  }
+
+  .layout-wrapper {
+    min-height: -webkit-fill-available;
+    height: -webkit-fill-available;
+  }
+
+  .student__work__statement {
+    height: -webkit-fill-available;
+    max-height: calc(100vh - 4 * var(--margin));
+  }
+
+  .student__work__item, .student__work__item img {
+    min-height: initial;
+    max-width: var(--text-width);
   }
 }

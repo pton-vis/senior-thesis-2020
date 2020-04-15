@@ -52,6 +52,23 @@ tabs:
                 type: color
                 editableAlpha: true # (optional) if set to false, alpha value controls are not displayed
                 default: "#000000"
+              links:
+                label: Links
+                type: structure
+                fields:
+                  link_url:
+                    label: Link Url
+                    type: text
+                    required: true
+                  link_text:
+                    label: Link Text
+                    type: text
+                    required: true
+                  link_access:
+                    label: Show only if logged in
+                    type: toggle
+                    default: false
+
       content:
         width: 2/3
         sections:

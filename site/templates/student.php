@@ -46,7 +46,7 @@
           <?= $workType; ?>
           "
         style="
-          --width: <?= rand(30, 50); ?>vw;
+          --height: <?= rand(30, 50); ?>vh;
           --margin-left: <?= rand(10, 40); ?>vw;
           --margin-top: <?= rand(0, 30); ?>vh;
           "
@@ -112,6 +112,11 @@
   <?= $page->title(); ?>
 </div>
 <div class="info with-color" style="--text-color: <?= $page->color(); ?>;">
+  <?php foreach($page->links()->toStructure() as $link): ?>
+    <?php if (($link->link_access()->toBool() && $kirby->user()) || $link->link_access()->toBool() == false): ?>
+      <a href="<?=$link->link_url(); ?>"><?= $link->link_text(); ?></a>
+    <?php endif; ?>
+  <?php endforeach; ?>
   <a href="/">home</a>
 </div>
 
