@@ -160,10 +160,11 @@ a:hover {
   left: var(--margin);
   top: var(--margin);
   width: var(--text-width);
-  overflow: auto;
+  overflow: scroll;
   border: 3px solid black;
   padding: var(--margin);
   background: #fff;
+  max-height: 80vh;
 
   transform: translateX(calc((-1 * var(--text-width)) - var(--margin) - 3px));
   transition: 250ms transform ease-in-out;
@@ -281,6 +282,7 @@ a:hover {
 
   .info__contents {
     transform: translateX(calc((-1 * var(--text-width)) -  (3 * var(--margin)) - 3px));
+    height: 80vh;
   }
 
   .layout-wrapper {
