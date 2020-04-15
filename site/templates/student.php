@@ -1,3 +1,9 @@
+<?php
+  if ($page->content_or_url() == 'url') {
+    header("Location: " . $page->url_url());
+    exit();
+  }
+?>
 <?php snippet('header'); ?>
 
 <?php
