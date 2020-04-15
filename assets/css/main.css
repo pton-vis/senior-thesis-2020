@@ -195,7 +195,7 @@ a:hover {
 }
 
 .student__work__statement {
-  max-width: var(--text-width);
+  width: var(--text-width);
   overflow: scroll;
   height: calc(100vh - 4 * var(--margin));
 }

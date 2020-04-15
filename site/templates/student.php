@@ -40,9 +40,11 @@
     --text-color: <?= $page->text_color(); ?>;
     "
   >
-  <div class="student__work__statement text">
-    <?= $page->main_content()->kt(); ?>
-  </div>
+  <?php if($page->main_content()->isNotEmpty()): ?>
+    <div class="student__work__statement text">
+      <?= $page->main_content()->kt(); ?>
+    </div>
+  <?php endif; ?>
   <ul class="student__work">
     <?php foreach($page->main_works()->toStructure() as $work): ?>
       <?php $workType = $work->type_of_work(); ?>
