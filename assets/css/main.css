@@ -21,6 +21,10 @@
 }
 
 /* RESET/GLOBAL */
+::-webkit-scrollbar {
+    display: none;
+}
+
 *,
 *:after,
 *:before{

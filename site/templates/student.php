@@ -46,7 +46,7 @@
           <?= $workType; ?>
           "
         style="
-          --height: <?= rand(30, 50); ?>vh;
+          --height: <?= rand(30, 60); ?>vh;
           --margin-left: <?= rand(10, 40); ?>vw;
           --margin-top: <?= rand(0, 30); ?>vh;
           "
