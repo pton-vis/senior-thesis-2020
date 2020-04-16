@@ -1,9 +1,3 @@
-<?php
-  if ($page->content_or_url() == 'url') {
-    header("Location: " . $page->url_url());
-    exit();
-  }
-?>
 <?php snippet('header'); ?>
 
 <?php
@@ -30,92 +24,96 @@
   $hasBgImg = $page->background_image_or_color() == 'image';
   $hasBgColor = $page->background_image_or_color() == 'color';
 ?>
-<div
-  class="
-    student__work__container
-    layout-wrapper
-    with-color
-  "
-  style="
-    --text-color: <?= $page->text_color(); ?>;
+<?php if ($page->content_or_url() == 'content'): ?>
+  <div
+    class="
+      student__work__container
+      layout-wrapper
+      with-color
     "
-  >
-  <?php if($page->main_content()->isNotEmpty()): ?>
-    <div class="student__work__statement text">
-      <?= $page->main_content()->kt(); ?>
-    </div>
-  <?php endif; ?>
-  <ul class="student__work">
-    <?php foreach($page->main_works()->toStructure() as $work): ?>
-      <?php $workType = $work->type_of_work(); ?>
-      <li
-        class="
-          student__work__item
-          <?= $workType; ?>
-          "
-        style="
-          --height: <?= rand(30, 60); ?>vh;
-          --margin-left: <?= rand(10, 40); ?>vw;
-          --margin-top: <?= rand(0, 30); ?>vh;
-          "
-        >
-        <?php if($workType == 'upload'): ?>
-          <?php $workFile = $work->work_upload()->toFile(); ?>
+    style="
+      --text-color: <?= $page->text_color(); ?>;
+      "
+    >
+    <?php if($page->main_content()->isNotEmpty()): ?>
+      <div class="student__work__statement text">
+        <?= $page->main_content()->kt(); ?>
+      </div>
+    <?php endif; ?>
+    <ul class="student__work">
+      <?php foreach($page->main_works()->toStructure() as $work): ?>
+        <?php $workType = $work->type_of_work(); ?>
+        <li
+          class="
+            student__work__item
+            <?= $workType; ?>
+            "
+          style="
+            --height: <?= rand(30, 60); ?>vh;
+            --margin-left: <?= rand(10, 40); ?>vw;
+            --margin-top: <?= rand(0, 30); ?>vh;
+            "
+          >
+          <?php if($workType == 'upload'): ?>
+            <?php $workFile = $work->work_upload()->toFile(); ?>
 
-          <?php if ($workFile->type() == 'image'): ?>
-            <a href="<?=$workFile->resize(2000)->url(); ?>" target="_blank">
-              <img src="<?=$workFile->resize(1000)->url(); ?>" loading="lazy">
-            </a>
-            <?php snippet('caption', ['work' => $work]); ?>
+            <?php if ($workFile->type() == 'image'): ?>
+              <a href="<?=$workFile->resize(2000)->url(); ?>" target="_blank">
+                <img src="<?=$workFile->resize(1000)->url(); ?>" loading="lazy">
+              </a>
+              <?php snippet('caption', ['work' => $work]); ?>
 
-          <?php elseif ($workFile->type() == 'video'): ?>
+            <?php elseif ($workFile->type() == 'video'): ?>
+              <div class="ratio-container">
+                <video class="ratio-contained" autoplay controls playsinline loop controlslist="nodownload">
+                  <source src="<?= $workFile->url(); ?>" type="<?= $workFile->mime(); ?>">
+                </video>
+              </div>
+              <?php snippet('caption', ['work' => $work]); ?>
+
+            <?php else: ?>
+              <a href="<?=$workFile->url(); ?>">
+                <?php if ($work->work_text()->isNotEmpty()): ?>
+                  <?php snippet('caption', ['work' => $work]); ?>
+                <?php else: ?>
+                  <div class="text">
+                    <?=$workFile->filename(); ?>
+                  </div>
+                <?php endif; ?>
+              </a>
+
+            <?php endif; ?>
+          <?php elseif($workType == 'embed'): ?>
             <div class="ratio-container">
-              <video class="ratio-contained" autoplay controls playsinline loop controlslist="nodownload">
-                <source src="<?= $workFile->url(); ?>" type="<?= $workFile->mime(); ?>">
-              </video>
+              <iframe class="ratio-contained" src="<?= getEmbedUrl($work->work_embed()); ?>" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
             </div>
             <?php snippet('caption', ['work' => $work]); ?>
 
           <?php else: ?>
-            <a href="<?=$workFile->url(); ?>">
-              <?php if ($work->work_text()->isNotEmpty()): ?>
-                <?php snippet('caption', ['work' => $work]); ?>
-              <?php else: ?>
-                <div class="text">
-                  <?=$workFile->filename(); ?>
-                </div>
-              <?php endif; ?>
-            </a>
+            <?php snippet('caption', ['work' => $work]); ?>
 
           <?php endif; ?>
-        <?php elseif($workType == 'embed'): ?>
-          <div class="ratio-container">
-            <iframe class="ratio-contained" src="<?= getEmbedUrl($work->work_embed()); ?>" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-          </div>
-          <?php snippet('caption', ['work' => $work]); ?>
+        </li>
+      <?php endforeach; ?>
+    </ul>
 
-        <?php else: ?>
-          <?php snippet('caption', ['work' => $work]); ?>
-
-        <?php endif; ?>
-      </li>
-    <?php endforeach; ?>
-  </ul>
-
-</div>
-<div
-  class="
-    student__background
-    fixed
-    <?= ($hasBgImg) ? 'with-background-image' : '' ?>
-    <?= ($hasBgColor) ? 'with-background-color' : '' ?>
-    "
-  style="
-    <?= ($hasBgImg) ? '--background-image: url(' . $page->background_image()->toFile()->resize(2000)->url() . ');' : '' ?>
-    <?= ($hasBgColor) ? '--background-color: ' . $page->background_color() . ';' : '' ?>
-    "
-  >
-</div>
+  </div>
+  <div
+    class="
+      student__background
+      fixed
+      <?= ($hasBgImg) ? 'with-background-image' : '' ?>
+      <?= ($hasBgColor) ? 'with-background-color' : '' ?>
+      "
+    style="
+      <?= ($hasBgImg) ? '--background-image: url(' . $page->background_image()->toFile()->resize(2000)->url() . ');' : '' ?>
+      <?= ($hasBgColor) ? '--background-color: ' . $page->background_color() . ';' : '' ?>
+      "
+    >
+  </div>
+<?php else: ?>
+  <iframe class="student__work__iframe" src="<?= $page->url_url(); ?>"></iframe>
+<?php endif; ?>
 <div class="student__name display with-color" style="--text-color: <?= $page->color(); ?>;">
   <?= $page->title(); ?>
 </div>

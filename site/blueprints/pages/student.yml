@@ -52,6 +52,9 @@ tabs:
                 type: color
                 editableAlpha: true # (optional) if set to false, alpha value controls are not displayed
                 default: "#000000"
+          all_meta:
+            type: fields
+            fields:
               links:
                 label: Links
                 type: structure

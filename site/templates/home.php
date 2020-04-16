@@ -17,13 +17,7 @@
       usort($sLA, 'studentSort');
     ?>
     <?php foreach($sLA as $student): ?>
-      <?php
-        $url = $student['url'];
-        if ($student['content']['content_or_url'] == 'url') {
-          $url = $student['content']['url_url'];
-        }
-      ?>
-      <ul class="student__list__entry"><a href="<?= $url; ?>"><?= $student['content']['title']; ?></a></ul>
+      <li class="student__list__entry"><a href="<?= $student['url']; ?>"><?= $student['content']['title']; ?></a></li>
     <?php endforeach; ?>
   </ul>
 </div>
