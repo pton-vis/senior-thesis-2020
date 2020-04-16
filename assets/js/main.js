@@ -6,7 +6,9 @@ window.addEventListener('load', () => {
     //
     // let h = map(0, 86400, 0, 360, secs);
     let h = parseInt(Math.random()*360);
-    secondary.style.setProperty('color', `hsl(${h}, 100%, 50%)`);
+    let s = parseInt(Math.random()*50 + 50);
+    let l = parseInt(Math.random()*50 + 25);
+    secondary.style.setProperty('color', `hsl(${h}, ${s}%, ${l}%)`);
   }
 });
 
