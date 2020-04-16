@@ -1,10 +1,11 @@
 window.addEventListener('load', () => {
   let secondary = document.querySelector('.site__title .secondary');
   if (secondary) {
-    let now = new Date();
-    let secs = now.getSeconds() + (60 * (now.getMinutes() + (60 * now.getHours())));
-
-    let h = map(0, 86400, 0, 360, secs);
+    // let now = new Date();
+    // let secs = now.getSeconds() + (60 * (now.getMinutes() + (60 * now.getHours())));
+    //
+    // let h = map(0, 86400, 0, 360, secs);
+    let h = parseInt(Math.random()*360);
     secondary.style.setProperty('color', `hsl(${h}, 100%, 50%)`);
   }
 });
