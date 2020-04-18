@@ -11,7 +11,7 @@
     <?php
       $studentList = $site->index()->filterBy('intendedTemplate', 'student')->listed();
       function studentSort($a, $b) {
-        return explode(' ', $a['content']['title'])[1] <=> explode(' ', $b['content']['title'])[1];
+        return end(explode(' ', $a['content']['title'])) <=> end(explode(' ', $b['content']['title']));
       }
       $sLA = $studentList->toArray();
       usort($sLA, 'studentSort');
