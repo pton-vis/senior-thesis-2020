@@ -114,7 +114,7 @@
 <?php else: ?>
   <iframe class="student__work__iframe" src="<?= $page->url_url(); ?>"></iframe>
 <?php endif; ?>
-<div class="student__name display with-color" style="--text-color: <?= $page->color(); ?>;">
+<div class="student__name display with-color" style="--text-color: <?= $page->text_color(); ?>;">
   <?= $page->title(); ?>
 </div>
 <div class="info with-color" style="--text-color: <?= $page->text_color(); ?>;">
