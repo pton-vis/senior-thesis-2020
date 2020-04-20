@@ -117,7 +117,7 @@
 <div class="student__name display with-color" style="--text-color: <?= $page->color(); ?>;">
   <?= $page->title(); ?>
 </div>
-<div class="info with-color" style="--text-color: <?= $page->color(); ?>;">
+<div class="info with-color" style="--text-color: <?= $page->text_color(); ?>;">
   <?php foreach($page->links()->toStructure() as $link): ?>
     <?php if (($link->link_access()->toBool() && $kirby->user()) || $link->link_access()->toBool() == false): ?>
       <a href="<?=$link->link_url(); ?>"><?= $link->link_text(); ?></a>
