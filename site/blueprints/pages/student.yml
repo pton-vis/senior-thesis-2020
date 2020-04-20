@@ -47,14 +47,14 @@ tabs:
                 default: "#000000"
                 when:
                   background_image_or_color: color
+          all_meta:
+            type: fields
+            fields:
               text_color:
                 label: Text Color
                 type: color
                 editableAlpha: true # (optional) if set to false, alpha value controls are not displayed
                 default: "#000000"
-          all_meta:
-            type: fields
-            fields:
               links:
                 label: Links
                 type: structure
