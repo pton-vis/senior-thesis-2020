@@ -24,7 +24,6 @@
   $hasBgImg = $page->background_image_or_color() == 'image';
   $hasBgColor = $page->background_image_or_color() == 'color';
 ?>
-
 <?php if ($page->content_or_url() == 'content'): ?>
   <div
     class="
