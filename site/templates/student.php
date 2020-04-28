@@ -1,3 +1,9 @@
+<?php
+  if ($page->go_direct()->toBool() == true) {
+    header("Location: " . $page->url_url());
+    exit();
+  }
+?>
 <?php snippet('header'); ?>
 
 <?php

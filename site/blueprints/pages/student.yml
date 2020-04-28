@@ -61,7 +61,7 @@ tabs:
                 fields:
                   link_url:
                     label: Link Url
-                    type: text
+                    type: url
                     required: true
                   link_text:
                     label: Link Text
@@ -109,17 +109,6 @@ tabs:
                     label: Text / Caption
                     type: textarea
                     size: small
-              # main_embeds:
-              #   label: Embeds
-              #   type: structure
-              #   fields:
-              #     url:
-              #       label: URL
-              #       type: text
-              #       required: true
-              #     caption:
-              #       label: Caption
-              #       type: textarea
               main_content:
                 label: Artist Statement
                 type: textarea
@@ -131,7 +120,13 @@ tabs:
             fields:
               url_url:
                 label: URL
-                type: text
+                type: url
+                width: 3/4
+              go_direct:
+                label: Go Direct
+                width: 1/4
+                type: toggle
+                help: Redirects to the site instead of having it embedded with an overlay. If you select this then links will not show.
   uploads:
     label: Uploads
     icon: file
