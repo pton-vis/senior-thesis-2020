@@ -26,9 +26,6 @@
 
     return $embedSrc;
   }
-
-  $hasBgImg = $page->background_image_or_color() == 'image';
-  $hasBgColor = $page->background_image_or_color() == 'color';
 ?>
 <?php if ($page->content_or_url() == 'content'): ?>
   <div
@@ -104,6 +101,11 @@
     </ul>
 
   </div>
+  <?php
+    $hasBgImg = $page->background_image_or_color() == 'image' && $page->background_image()->toFile()->type() == 'image';
+    $hasBgVid = $page->background_image_or_color() == 'image' && $page->background_image()->toFile()->type() == 'video';
+    $hasBgColor = $page->background_image_or_color() == 'color';
+ ?>
   <div
     class="
       student__background
@@ -116,6 +118,11 @@
       <?= ($hasBgColor) ? '--background-color: ' . $page->background_color() . ';' : '' ?>
       "
     >
+    <?php if($hasBgVid): ?>
+      <video class="student__background__video" autoplay muted playsinline loop>
+        <source src="<?= $page->background_image()->toFile()->url(); ?>" type="<?= $page->background_image()->toFile()->mime(); ?>">
+      </video>
+    <?php endif; ?>
   </div>
 <?php else: ?>
   <iframe class="student__work__iframe" src="<?= $page->url_url(); ?>"></iframe>

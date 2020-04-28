@@ -27,14 +27,14 @@ tabs:
               content_or_url: content
             fields:
               background_image_or_color:
-                label: Background Image or Color
+                label: Background Image/Video or Color
                 type: radio
                 options:
-                  image: Image
+                  image: Image/Video
                   color: Color
                 default: image
               background_image:
-                label: Background Image
+                label: Background Image or Video
                 type: files
                 max: 1
                 layout: cards
