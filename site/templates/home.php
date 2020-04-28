@@ -23,7 +23,7 @@
         $url = $student['url'];
         // print_r($student['content']);
         if ($student['content']['content_or_url'] == 'url') {
-          if($student['content']['go_direct'] == true) {
+          if(array_key_exists('go_direct', $student['content']) && $student['content']['go_direct'] == true) {
             $url = $student['content']['url_url'];
           }
         }
