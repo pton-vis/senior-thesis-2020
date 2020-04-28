@@ -285,7 +285,8 @@ a:hover {
     --font-size--display-secondary: var(--font-size--display-secondary--mobile);
     --margin: var(--margin--mobile);
 
-    --text-width: calc(100vw - 2 * var(--margin));
+    --safe-width: calc(100vw - 2 * var(--margin));
+    --text-width: calc(var(--safe-width) - 4 * var(--margin));
   }
 
   .info__contents {
@@ -305,6 +306,10 @@ a:hover {
 
   .student__work__item, .student__work__item img {
     min-height: initial;
-    max-width: var(--text-width);
+    max-width: var(--safe-width);
+  }
+
+  .student__work__item:first-of-type {
+    margin-left: calc(2 * var(--margin));
   }
 }
