@@ -22,8 +22,10 @@
       <?php
         $url = $student['url'];
         // print_r($student['content']);
-        if ($student['content']['content_or_url'] == 'url' && $student['content']['go_direct'] == true) {
-          $url = $student['content']['url_url'];
+        if ($student['content']['content_or_url'] == 'url') {
+          if($student['content']['go_direct'] == true) {
+            $url = $student['content']['url_url'];
+          }
         }
       ?>
       <li class="student__list__entry"><a href="<?= $url ?>"><?= $student['content']['title']; ?></a></li>
