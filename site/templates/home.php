@@ -21,7 +21,8 @@
     <?php foreach($sLA as $student): ?>
       <?php
         $url = $student['url'];
-        if ($student['content']['go_direct'] == true) {
+        // print_r($student['content']);
+        if ($student['content']['content_or_url'] == 'url' && $student['content']['go_direct'] == true) {
           $url = $student['content']['url_url'];
         }
       ?>
