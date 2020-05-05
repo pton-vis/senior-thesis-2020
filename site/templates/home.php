@@ -22,7 +22,7 @@
       <?php
         $url = $student['url'];
         if ($student['content']['content_or_url'] == 'url') {
-          if(array_key_exists('go_direct', $student['content']) && $student['content']['go_direct'] == true) {
+          if(array_key_exists('go_direct', $student['content']) && $student['content']['go_direct'] == 'true') {
             $url = $student['content']['url_url'];
           }
         }
