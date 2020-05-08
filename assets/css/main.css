@@ -242,12 +242,12 @@ a:hover {
 }
 
 /* Video */
-.student__work__item .ratio-container {
+.student__work__item .ratio-container, .text.video {
   padding: 56.25% 0 0 0;
   position: relative;
 }
 
-.student__work__item .ratio-contained {
+.student__work__item .ratio-contained, .text.video iframe {
   position:absolute;
   top:0;
   left:0;
@@ -286,6 +286,10 @@ a:hover {
 .text img {
   display: block;
   width: 100%;
+}
+
+.text iframe {
+  border: none;
 }
 
 @media screen and (max-width: 768px) {
